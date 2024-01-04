@@ -14,6 +14,11 @@
     margin-bottom: 10px;
 }
 
+.slider {
+    display: flex;
+    transition: transform 0.8s ease;
+}
+
 .thumbnails {
     display: flex;
     overflow: hidden;

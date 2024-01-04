@@ -22,10 +22,8 @@
 
             <div class="gallery-container">
                 <div class="gallery">
-                    <div class="slider" style="opacity: 1; margin-right: 0px;">
-                        <img src="https://picsum.photos/600/300">
-                        <img src="https://picsum.photos/600/300">
-                        <img src="https://picsum.photos/600/300">
+                    <div class="slider" id="image-slider">
+                        <img src="https://picsum.photos/600/300?random=1">
                     </div>
                 </div>
             </div>
@@ -57,9 +55,12 @@
 <script src="js/script.js"></script>
 <script>
     $('.slider').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        accessibility: true
     });
 </script>
+
 
 </html>
