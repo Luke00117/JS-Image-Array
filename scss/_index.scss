@@ -7,32 +7,46 @@
     display: flex;
     justify-content: center;
     overflow: hidden;
-    max-width: 1000px;
     margin: auto;
     height: 400px;
     width: 600px;
     margin-bottom: 10px;
 }
 
+.gallery div {
+    width: 600px;
+}
+
+
+.controls {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.controls button {
+    display: inline-block;
+    width: 300px;
+    height: 56px;
+}
+
+.image-container {
+    padding: 10px;
+    width: 600px !important;
+}
+
 .slider {
     display: flex;
     transition: transform 0.8s ease;
+    justify-content: space-between;
 }
 
-.thumbnails {
-    display: flex;
-    overflow: hidden;
+.slider img {
     width: 600px;
-    margin: 0 auto;
+    height: 300px;
+    margin-right: 30px;
 }
 
-.thumbnail {
-    flex: 0 0 16%;
-}
-
-.thumbnail:not(:last-child) {
-    margin-right: 5px;
-}
 
 
 .container h1 {

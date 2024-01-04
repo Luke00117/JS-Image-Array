@@ -2,6 +2,11 @@ $(document).ready(function() {
     const picsumEndpoint = 'https://picsum.photos/v2/list?page=1&limit=1000';
     let picsumIds = [];
     let currentImageIndex = 0;
+    const generateRandomImageUrl = function () {
+    // You can modify this function to generate a dynamic image URL based on your requirements.
+    // For example, you can use an API to fetch random images or generate URLs with dynamic parameters.
+    return `https://picsum.photos/600/300?random=${Math.random()}`;
+};
 
     const fetchPicsumIds = async () => {
         try {
@@ -16,15 +21,29 @@ $(document).ready(function() {
     fetchPicsumIds();
 
     const handleImageId = function (imageId, email) {
-        const slider = $('.slider');
-        const newImage = $(`<img src="https://picsum.photos/id/${imageId}/600/300" alt="Lorem Picsum Image" data-email="${email}">`);
-        slider.append(newImage);
+    const slider = $('.gallery');
+    const currentSlideIndex = slider.slick('slickCurrentSlide');
 
+    const newImage = $(`<div class="image-container"><img src="" alt="Random Image" data-email="${email}"></div>`);
+
+    // Dynamically set the source of the newly added image
+    const imageUrl = generateRandomImageUrl();
+    newImage.find('img').attr('src', imageUrl);
+
+    // Add the new image to the slider
+    slider.slick('slickAdd', newImage, null, function () {
         // Animate the new image to slide in from the right
-        newImage.animate({opacity: 1, marginRight: 0}, 800);
+        newImage.animate({ opacity: 1, marginRight: 0 }, 800);
 
-        console.log(`Image with ID ${imageId} assigned to email: ${email}`);
-    }
+        // Get the index of the newly added slide
+        const newIndex = currentSlideIndex + 1;
+
+        // Slide directly to the new index without cycling through intermediate slides
+        slider.slick('slickGoTo', newIndex);
+    });
+
+    console.log(`Image with ID ${imageId} assigned to email: ${email}`);
+};
 
     const generateImage = function (email) {
         if (picsumIds.length === 0) {
@@ -55,9 +74,15 @@ $(document).ready(function() {
 
 
 
+// $(document).ready(function(){
+//     $('.gallery').slick({
+//         // @type {object} DOM node
+//         nextArrow: document.getElementById('slick-next'),
+//         prevArrow: document.getElementById('slick-previous')
+//     });
+
+// });
 
 
 
-
-
-
+// $(`<img src="https://picsum.photos/id/${imageId}/600/300" alt="Lorem Picsum Image" data-email="${email}">`)
