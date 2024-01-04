@@ -22,8 +22,11 @@
 
             <div class="gallery-container">
                 <div class="gallery">
-                    <button type="button" class="slick-prev">Previous</button>
-                    <button type="button" class="slick-next">Next</button>
+                    <div class="slider" style="opacity: 1; margin-right: 0px;">
+                        <img src="https://picsum.photos/600/300">
+                        <img src="https://picsum.photos/600/300">
+                        <img src="https://picsum.photos/600/300">
+                    </div>
                 </div>
             </div>
 
@@ -53,11 +56,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 <script src="js/script.js"></script>
 <script>
-    $('.autoplay').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
+    $('.slider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1
     });
 </script>
 
