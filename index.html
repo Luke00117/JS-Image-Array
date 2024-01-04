@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Image Array</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+
+
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Image Generator</h1>
+
+        <div class="image-box">
+
+            <div class="gallery-container">
+                <div class="gallery">
+                    <button type="button" class="slick-prev">Previous</button>
+                    <button type="button" class="slick-next">Next</button>
+                </div>
+            </div>
+
+            <div class="thumbnails-container">
+                <div class="thumbnails">
+                    <!-- Thumbnails will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-container">
+            <form id="emailForm">
+
+                <label for="email">Input Your Email Address</label>
+                <input type="email" id="email" placeholder="example@gmail.com" required>
+
+                <input type="submit" class="btn submit-btn" id="submit" value="Generate Image">
+
+            </form>
+        </div>
+
+    </div>
+</body>
+
+<script src="js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="slick/slick.min.js"></script>
+<script src="js/script.js"></script>
+
+</html>
