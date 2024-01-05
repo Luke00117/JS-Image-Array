@@ -74,14 +74,7 @@ $(document).ready(function() {
 
 
 
-// $(document).ready(function(){
-//     $('.gallery').slick({
-//         // @type {object} DOM node
-//         nextArrow: document.getElementById('slick-next'),
-//         prevArrow: document.getElementById('slick-previous')
-//     });
 
-// });
 
 
 
