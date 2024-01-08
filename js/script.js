@@ -1,6 +1,4 @@
-
 $(document).ready(function () {
-    // Initialize Slick Carousel
     var $gallery = $('.gallery').slick({
         infinite: true,
         slidesToShow: 1,
@@ -8,6 +6,16 @@ $(document).ready(function () {
         arrows: true,
         nextArrow: $('.custom-next'),
         prevArrow: $('.custom-prev')
+    });
+
+    $('.thumbnails').slick({
+        autoplay: true,
+        slidesToShow: 7,
+        slidesToScroll: 1,
+        asNavFor: '.gallery',
+        dots: true,
+        focusOnSelect: true,
+        variableWidth: true
     });
 
  
