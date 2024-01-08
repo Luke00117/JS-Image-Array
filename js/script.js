@@ -92,6 +92,11 @@ $(document).ready(function () {
         var currentImageUrl = $mainGallery.find('.slick-current img').attr('src');
         $assignedGallery.slick('slickAdd', '<div class="image-container"><img src="' + currentImageUrl + '" data-email="' + email + '"></div>');
         $assignedThumbnails.slick('slickAdd', '<div class="thumbnail"><img src="' + currentImageUrl + '" data-email="' + email + '"></div>');
+        
+        var newImageUrl = 'https://picsum.photos/720/300?random=' + Math.floor(Math.random() * 1000);
+        $mainGallery.slick('slickAdd', '<div class="image-container"><img src="' + newImageUrl + '"></div>');
+        $mainGallery.slick('slickNext');
+        $thumbnails.slick('slickAdd', '<div class="thumbnail"><img src="' + newImageUrl + '"></div>');
 
         console.log(`Image assigned to email: ${email}`);
         toastr.success('Image Assigned', {
