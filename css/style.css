@@ -539,10 +539,15 @@ body {
 }
 
 .image-container img {
-  border-radius: 5px;
+  border-radius: 0 5px 5px 5px;
 }
 
-.gallery {
+.gallery-container {
+  display: block;
+}
+
+.gallery,
+.assigned-images-gallery {
   display: flex;
   overflow: hidden;
   margin: auto;
@@ -551,15 +556,70 @@ body {
   margin-bottom: 10px;
 }
 
-.gallery div {
+.assigned-images-gallery {
+  flex-wrap: wrap;
+}
+
+.gallery div,
+.assigned-images-gallery div {
   width: 720px;
 }
 
-.controls {
+.controls,
+.assigned-controls {
   width: 720px;
+  display: flex;
   justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
+}
+
+.assigned-controls {
+  display: none;
+}
+
+.assigned-controls.active {
+  display: flex;
+}
+
+#placeholder.hidden {
+  display: none;
+}
+
+.thumbnails,
+.assigned-thumbnails {
+  width: 720px;
+  height: 80px;
+  margin-left: 40px;
+  margin-right: 40px;
+  justify-content: left;
+}
+
+.thumbnails .slick-track,
+.assigned-thumbnails .slick-track {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.assigned-thumbnails {
+  display: none;
+}
+
+.assigned-thumbnails.active {
+  display: block !important;
+}
+
+.thumbnail,
+.assigned-thumbnail {
+  height: 80px;
+  max-height: 80px;
+  width: 16%;
+  display: inline;
+}
+
+.thumbnail img,
+.assigned-thumbnail img {
+  border-radius: 5px;
 }
 
 .image-container img {
@@ -571,6 +631,39 @@ body {
   display: flex;
   transition: transform 0.8s ease;
   justify-content: space-between;
+}
+
+.sliders-container {
+  position: relative;
+}
+
+.assigned-images-container {
+  display: none;
+}
+
+.assigned-images-container.active {
+  display: block;
+}
+
+.img-gen.active,
+.ass-img.active {
+  background-color: #003366;
+  border: 3px solid rgba(211, 211, 211, 0.9411764706);
+  color: #fff;
+}
+
+.titles {
+  display: flex;
+  margin-left: 40px;
+  margin-right: 50px;
+}
+
+.titles h2 {
+  padding: 5px;
+  font-size: 1.5rem;
+  background-color: rgba(211, 211, 211, 0.9411764706);
+  border: 3px solid #003366;
+  border-radius: 5px 15px 0 0;
 }
 
 .container h1,

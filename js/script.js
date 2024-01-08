@@ -1,40 +1,79 @@
+
 $(document).ready(function () {
-    var $gallery = $('.gallery').slick({
+
+    $('.img-gen').addClass('active');
+    
+    
+
+    var $mainGallery = $('.gallery').slick({
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
-        nextArrow: $('.custom-next'),
-        prevArrow: $('.custom-prev')
+        asNavFor: '.thumbnails',
+        nextArrow: $('.custom-next-main'),
+        prevArrow: $('.custom-prev-main')
     });
 
-    $('.thumbnails').slick({
-        autoplay: true,
-        slidesToShow: 7,
+    var $assignedGallery = $('.assigned-images-gallery').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay:true,
+        arrows: true,
+        asNavFor: '.assigned-thumbnails',
+        nextArrow: $('.custom-next-assigned'),
+        prevArrow: $('.custom-prev-assigned')
+    });
+
+    var $thumbnails = $('.thumbnails').slick({
+        slidesToShow: 6,
         slidesToScroll: 1,
         asNavFor: '.gallery',
-        dots: true,
+        dots: false,
+        arrows: false,
         focusOnSelect: true,
-        variableWidth: true
     });
 
- 
-    $('.custom-next').on('click', function () {
-        var newImageUrl = 'https://picsum.photos/720/300?random=' + Math.floor(Math.random() * 1000);
+    var $assignedThumbnails = $('.assigned-thumbnails').slick({
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        asNavFor: '.assigned-images-gallery',
+        dots: false,
+        arrows: false,
+        focusOnSelect: true,
+    });
 
     
-        $gallery.slick('slickAdd', '<div class="image-container"><img src="' + newImageUrl + '"></div>');
+    
 
-      
-        $gallery.slick('slickNext');
+
+    
+
+    $('.custom-next-main').on('click', function () {
+        var newImageUrl = 'https://picsum.photos/720/300?random=' + Math.floor(Math.random() * 1000);
+        $mainGallery.slick('slickAdd', '<div class="image-container"><img src="' + newImageUrl + '"></div>');
+        $mainGallery.slick('slickNext');
+        $thumbnails.slick('slickAdd', '<div class="thumbnail"><img src="' + newImageUrl + '"></div>');
+        
     });
 
-
-    $('.custom-prev').on('click', function () {
-        $gallery.slick('slickPrev');
+    $('.custom-prev-main').on('click', function () {
+        $mainGallery.slick('slickPrev');
     });
 
-  
+    $('.custom-next-assigned').on('click', function () {
+        $assignedGallery.slick('slickNext');
+    });
+
+    $('.custom-prev-assigned').on('click', function () {
+        $assignedGallery.slick('slickPrev');
+    });
+
+    
+
+
+
     $('#emailForm').submit(function (event) {
         event.preventDefault();
         const emailInput = $('#email');
@@ -49,24 +88,64 @@ $(document).ready(function () {
         }
     });
 
-
     function assignImage(email) {
-        var currentSlide = $gallery.slick('slickCurrentSlide');
-        var currentImage = $('.slick-slide').eq(currentSlide).find('img');
-
-        currentImage.attr('data-email', email);
+        var currentImageUrl = $mainGallery.find('.slick-current img').attr('src');
+        $assignedGallery.slick('slickAdd', '<div class="image-container"><img src="' + currentImageUrl + '" data-email="' + email + '"></div>');
+        $assignedThumbnails.slick('slickAdd', '<div class="thumbnail"><img src="' + currentImageUrl + '" data-email="' + email + '"></div>');
 
         console.log(`Image assigned to email: ${email}`);
         toastr.success('Image Assigned', {
-            tapToDismiss:true,
-            progressBar:true,
+            tapToDismiss: true,
+            progressBar: true,
             timeOut: 3000,
-        })
+        });
     }
+
+    function addAssignedImage(imageUrl) {
+        var assignedImageContainer = $(".assigned-images-gallery");
+        var assignedThumbnails = $('.assigned-thumbnails')
+        assignedImageContainer.append('<div class="image-container"><img src="' + imageUrl + '" alt="Assigned Image"></div>');
+        assignedThumbnails.append('<div class="assigned-thumbnail"><img src="' + imageUrl + '" alt="Assigned Image"></div>');
+    }
+
+   
+    const assigned = $('.assigned-images-container');
+    const title = $('.img-gen');
+    const title2 = $('.ass-img');
+    const controls = $('.controls');
+    const assignControls = $('.assigned-controls');
+    const thumbnails = $('.thumbnails');
+    const assignedThumbnails = $('.assigned-thumbnails');
+    
+    
+    $('.img-gen').on('click', function () {
+    assigned.removeClass('active').hide();
+    title.addClass('active');
+    title2.removeClass('active');
+    $mainGallery.show();
+    controls.show();
+    assignControls.hide();
+    thumbnails.show(); 
+    assignedThumbnails.hide()
+
 });
 
-	
-
+    $('.ass-img').on('click', function () {
+        $assignedGallery.slick('slickGoTo', 1);
+        $assignedThumbnails.slick('slickGoTo', 1);
+      
+        $mainGallery.hide();
+        assigned.addClass('active').show();
+        title.removeClass('active');
+        title2.addClass('active');
+        controls.hide();
+        assignControls.addClass('active').show();
+        thumbnails.hide();
+        assignedThumbnails.show();
+        
+        
+    });
+});
 
 
 
