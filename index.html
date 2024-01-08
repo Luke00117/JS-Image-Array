@@ -9,77 +9,91 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
     <div class=" container">
 
-        <h1>Image Generator</h1>
+        <div class="wrapper">
 
-        <div class="image-box">
+            <div class="intro">
+                <h1>Welcome</h1>
+                <p>Generate images at the press of a button and assign them to your email address</p>
+            </div>
 
-            <div class="gallery-container">
-                <div class="gallery">
-                    <div class="image-container">
-                        <img alt="Lorem Picsum Image" src="https://picsum.photos/600/300?random=1">
+            <h2>Image Generator</h2>
+
+            <div class="image-box">
+
+                <div class="gallery-container">
+                    <div class="gallery">
+                        <div class="image-container">
+                            <img alt="Lorem Picsum Image" src="https://picsum.photos/720/300?random=1">
+                        </div>
                     </div>
 
-                    <div class="image-container">
-                        <img alt="Lorem Picsum Image" src="https://picsum.photos/600/300?random=2">
-                    </div>
-
-                    <div class="image-container">
-                        <img alt="Lorem Picsum Image" src="https://picsum.photos/600/300?random=3">
-                    </div>
-
-                    <div class="image-container">
-                        <img alt="Lorem Picsum Image" src="https://picsum.photos/600/300?random=4">
-                    </div>
-
-                    <div class="image-container">
-                        <img alt="Lorem Picsum Image" src="https://picsum.photos/600/300?random=5">
-                    </div>
-
-                    <div class="image-container">
-                        <img alt="Lorem Picsum Image" src="https://picsum.photos/600/300?random=6">
-                    </div>
-
-                </div>
-                <div class="controls">
-                    <button class="custom-prev">
-                        <span class="prev">
-                            <i class="fa fa-solid fa-caret-left"></i>
+                    <div class="controls">
+                        <button class="slide-btn custom-prev">
                             Previous
-                        </span>
-                    </button>
+                        </button>
 
-                    <button class="custom-next">
-                        <span class="next">
-                            <i class="fa fa-solid fa-caret-right"></i>
+                        <button class="slide-btn custom-next">
                             Next
-                        </span>
-                    </button>
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="thumbnails-container">
-                <div class="thumbnails">
-                    <!-- Thumbnails will be dynamically added here -->
-                </div>
+
+            <div class="form-container">
+                <form id="emailForm">
+
+                    <label for="email"></label>
+                    <input type="email" id="email" placeholder="Input your email address here" required>
+
+                    <input type="submit" class="btn submit-btn" id="submit" value="Assign Image">
+
+                </form>
             </div>
+
         </div>
 
-
-        <div class="form-container">
-            <form id="emailForm">
-
-                <label for="email">Input Your Email Address</label>
-                <input type="email" id="email" placeholder="example@gmail.com" required>
-
-                <input type="submit" class="btn submit-btn" id="submit" value="Generate Image">
-
-            </form>
+        <div class="destinations">
+            <ul class="grid">
+                <li class="large fade"
+                    style="background-image:url(https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497);">
+                </li>
+                <li class="med fade"
+                    style="background-image:url(https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80);">
+                </li>
+                <li class="small fade"
+                    style="background-image:url(https://images.unsplash.com/photo-1571057103081-9e0b18e861f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1326&q=80);">
+                </li>
+                <li class="large fade"
+                    style="background-image:url(https://images.unsplash.com/photo-1525610553991-2bede1a236e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80); ">
+                </li>
+                <li class="small fade"
+                    style="background-image:url(https://i.pinimg.com/originals/f3/bd/84/f3bd8497e15399201b634714ec5ed390.jpg);">
+                </li>
+                <li class="med fade"
+                    style="background-image:url(https://images.unsplash.com/photo-1491960693564-421771d727d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);">
+                </li>
+                <li class="med fade"
+                    style="background-image:url(https://images.unsplash.com/photo-1544738122-52d63216e052?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);">
+                </li>
+                <li class="small fade"
+                    style="background-image:url(https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60); ">
+                </li>
+                <li class="large fade"
+                    style="background-image:url(https://images.unsplash.com/photo-1527224538127-2104bb71c51b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60); ">
+                </li>
+            </ul>
         </div>
+    </div>
 
     </div>
 </body>
@@ -87,19 +101,6 @@
 <script src="js/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 <script src="js/script.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.gallery').slick({
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: true,
-            centerMode: true,
-            nextArrow: $('.custom-next'),
-            prevArrow: $('.custom-prev')
-        });
-    });
-</script>
 
 
 </html>
