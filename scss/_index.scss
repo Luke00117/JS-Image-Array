@@ -134,60 +134,6 @@ input:focus {
     width: 49%;
 }
 
-// found this background effect on codepen thought it looked pretty cool 
-
-.grid {
-    width: 100%;
-    top: 0;
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    position: absolute;
-    z-index: -1;
-
+.toast-success {
+    background-color: #003366;
 }
-
-.destinations {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.destinations .grid li {
-    height: 600px;
-    padding: 10px;
-    background-clip: content-box;
-    background-size: cover;
-}
-
-.destinations .grid li.large {
-    flex-basis: 40%;
-}
-
-.destinations .grid li.small {
-    flex-basis: 25%;
-}
-
-.destinations .grid li.med {
-    flex-basis: 35%;
-}
-
-/* .seq-in .content {
-  transform: translateY(0);
-  transition: .2s;
-}
-
-.content {
-  transform: translateY(100%);
-}
-
-.seq-in .content {
-transform: translateY(0);
-transition: .25s;
-}
-
-.seq-in .threed{
-  animation-name: threed; 
-  animation-duration: 1s;
-} */
