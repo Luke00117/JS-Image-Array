@@ -43,6 +43,28 @@ $(document).ready(function () {
         focusOnSelect: true,
     });
 
+    window.resizeTo(window.innerWidth * 0.99, window.innerHeight);
+
+        // Resize back to 100% after 100ms
+        setTimeout(function () {
+            window.resizeTo(window.innerWidth, window.innerHeight);
+        }, 1000);
+
+        
+
+    $('.ass-img').on('click', function () {
+    // Your existing code...
+
+    $assignedGallery.slick('slickGoTo', 1);
+    $assignedThumbnails.slick('slickGoTo', 1);
+
+    // Resize slick track and thumbnails for assigned gallery
+    $assignedGallery.slick('slickSetOption', 'slidesToShow', 1);
+    $assignedThumbnails.slick('slickSetOption', 'slidesToShow', 6);
+
+    // Your existing code...
+});
+
     
     
 
@@ -153,9 +175,6 @@ $(document).ready(function () {
         thumbnails.show(); 
         assignedThumbnails.hide()
         $(window).trigger('resize');
-        $('.thumbnails').slick();
-
-
 });
 
     $('.ass-img').on('click', function () {
@@ -170,22 +189,8 @@ $(document).ready(function () {
         assignControls.addClass('active').show();
         thumbnails.hide();
         assignedThumbnails.show();
-        $(window).trigger('resize');
-        $('.assigned-thumbnails').slick();
-
-        window.resizeTo(window.innerWidth * 0.99, window.innerHeight);
-
-        // Resize back to 100% after 100ms
-        setTimeout(function () {
-            window.resizeTo(window.innerWidth, window.innerHeight);
-        }, 100);
-
-        
-
-        
+        $(window).trigger('resize');      
     });
-
-    
 
     
 
