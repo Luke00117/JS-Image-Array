@@ -45,7 +45,7 @@ $(document).ready(function () {
 
     window.resizeTo(window.innerWidth * 0.99, window.innerHeight);
 
-        // Resize back to 100% after 100ms
+       
         setTimeout(function () {
             window.resizeTo(window.innerWidth, window.innerHeight);
         }, 1000);
@@ -87,21 +87,18 @@ $(document).ready(function () {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (emailRegex.test(userEmail)) {
-            // Check if a different email is entered
             if (currentAssignedEmail !== null && currentAssignedEmail !== userEmail) {
-                // Delete assigned images and thumbnails for the previous email
                 deleteAssignedImages(currentAssignedEmail);
             }
 
             assignImage(userEmail);
-            currentAssignedEmail = userEmail; // Update the current assigned email
+            currentAssignedEmail = userEmail;
         } else {
             alert('Please enter a valid email address.');
         }
     });
 
     function deleteAssignedImages(email) {
-        // Find and remove assigned images and thumbnails for the given email
         $('.assigned-images-gallery .image-container img[data-email="' + email + '"]').parent().remove();
         $('.assigned-thumbnails .thumbnail img[data-email="' + email + '"]').parent().remove();
         $(window).trigger('resize');
