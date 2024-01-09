@@ -70,10 +70,6 @@
 
 
 
-#placeholder.hidden {
-    display: none;
-}
-
 
 
 .thumbnails,
@@ -85,10 +81,18 @@
     justify-content: left;
 }
 
+
 .thumbnails .slick-track,
 .assigned-thumbnails .slick-track {
     margin-left: 0;
     margin-right: 0;
+    width: 720px;
+}
+
+
+.assigned-thumbnails .slick-track {
+    width: 720px;
+    transform: translate3d(0px, 0px, 0px);
 }
 
 .assigned-thumbnails {
@@ -97,7 +101,10 @@
 
 .assigned-thumbnails.active {
     display: block !important;
+    transform: translateZ(0);
 }
+
+
 
 .thumbnail,
 .assigned-thumbnail {
@@ -105,6 +112,7 @@
     max-height: 80px;
     width: 16%;
     display: inline;
+    transform: translateZ(0);
 }
 
 .thumbnail img,

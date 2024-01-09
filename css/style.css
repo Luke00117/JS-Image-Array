@@ -582,10 +582,6 @@ body {
   display: flex;
 }
 
-#placeholder.hidden {
-  display: none;
-}
-
 .thumbnails,
 .assigned-thumbnails {
   width: 720px;
@@ -599,6 +595,12 @@ body {
 .assigned-thumbnails .slick-track {
   margin-left: 0;
   margin-right: 0;
+  width: 720px;
+}
+
+.assigned-thumbnails .slick-track {
+  width: 720px;
+  transform: translate3d(0px, 0px, 0px);
 }
 
 .assigned-thumbnails {
@@ -607,6 +609,7 @@ body {
 
 .assigned-thumbnails.active {
   display: block !important;
+  transform: translateZ(0);
 }
 
 .thumbnail,
@@ -615,6 +618,7 @@ body {
   max-height: 80px;
   width: 16%;
   display: inline;
+  transform: translateZ(0);
 }
 
 .thumbnail img,

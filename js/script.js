@@ -19,7 +19,6 @@ $(document).ready(function () {
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay:true,
         arrows: true,
         asNavFor: '.assigned-thumbnails',
         nextArrow: $('.custom-next-assigned'),
@@ -55,7 +54,7 @@ $(document).ready(function () {
         $mainGallery.slick('slickAdd', '<div class="image-container"><img src="' + newImageUrl + '"></div>');
         $mainGallery.slick('slickNext');
         $thumbnails.slick('slickAdd', '<div class="thumbnail"><img src="' + newImageUrl + '"></div>');
-        
+                
     });
 
     $('.custom-prev-main').on('click', function () {
@@ -74,6 +73,8 @@ $(document).ready(function () {
 
 
 
+    var currentAssignedEmail = null;
+
     $('#emailForm').submit(function (event) {
         event.preventDefault();
         const emailInput = $('#email');
@@ -82,35 +83,51 @@ $(document).ready(function () {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (emailRegex.test(userEmail)) {
+            // Check if a different email is entered
+            if (currentAssignedEmail !== null && currentAssignedEmail !== userEmail) {
+                // Delete assigned images and thumbnails for the previous email
+                deleteAssignedImages(currentAssignedEmail);
+            }
+
             assignImage(userEmail);
+            currentAssignedEmail = userEmail; // Update the current assigned email
         } else {
             alert('Please enter a valid email address.');
         }
     });
 
+    function deleteAssignedImages(email) {
+        // Find and remove assigned images and thumbnails for the given email
+        $('.assigned-images-gallery .image-container img[data-email="' + email + '"]').parent().remove();
+        $('.assigned-thumbnails .thumbnail img[data-email="' + email + '"]').parent().remove();
+        $(window).trigger('resize');
+    }
+
+
     function assignImage(email) {
         var currentImageUrl = $mainGallery.find('.slick-current img').attr('src');
         $assignedGallery.slick('slickAdd', '<div class="image-container"><img src="' + currentImageUrl + '" data-email="' + email + '"></div>');
         $assignedThumbnails.slick('slickAdd', '<div class="thumbnail"><img src="' + currentImageUrl + '" data-email="' + email + '"></div>');
-        
+
         var newImageUrl = 'https://picsum.photos/720/300?random=' + Math.floor(Math.random() * 1000);
         $mainGallery.slick('slickAdd', '<div class="image-container"><img src="' + newImageUrl + '"></div>');
+        $thumbnails.slick('slickAdd', '<div class="thumbnail" style="width: 120px"><img src="' + newImageUrl + '"></div>');
         $mainGallery.slick('slickNext');
-        $thumbnails.slick('slickAdd', '<div class="thumbnail"><img src="' + newImageUrl + '"></div>');
 
         console.log(`Image assigned to email: ${email}`);
         toastr.success('Image Assigned', {
             tapToDismiss: true,
             progressBar: true,
             timeOut: 3000,
-        });
+    });
+    
     }
 
     function addAssignedImage(imageUrl) {
         var assignedImageContainer = $(".assigned-images-gallery");
         var assignedThumbnails = $('.assigned-thumbnails')
         assignedImageContainer.append('<div class="image-container"><img src="' + imageUrl + '" alt="Assigned Image"></div>');
-        assignedThumbnails.append('<div class="assigned-thumbnail"><img src="' + imageUrl + '" alt="Assigned Image"></div>');
+        assignedThumbnails.append('<div class="assigned-thumbnail" style="width: 120px"><img src="' + imageUrl + '" alt="Assigned Image"></div>');
     }
 
    
@@ -124,14 +141,20 @@ $(document).ready(function () {
     
     
     $('.img-gen').on('click', function () {
-    assigned.removeClass('active').hide();
-    title.addClass('active');
-    title2.removeClass('active');
-    $mainGallery.show();
-    controls.show();
-    assignControls.hide();
-    thumbnails.show(); 
-    assignedThumbnails.hide()
+        $mainGallery.slick('slickGoTo', 1);
+        $thumbnails.slick('slickGoTo', 1);
+
+        assigned.removeClass('active').hide();
+        title.addClass('active');
+        title2.removeClass('active');
+        $mainGallery.show();
+        controls.show();
+        assignControls.hide();
+        thumbnails.show(); 
+        assignedThumbnails.hide()
+        $(window).trigger('resize');
+        $('.thumbnails').slick();
+
 
 });
 
@@ -147,9 +170,26 @@ $(document).ready(function () {
         assignControls.addClass('active').show();
         thumbnails.hide();
         assignedThumbnails.show();
+        $(window).trigger('resize');
+        $('.assigned-thumbnails').slick();
+
+        window.resizeTo(window.innerWidth * 0.99, window.innerHeight);
+
+        // Resize back to 100% after 100ms
+        setTimeout(function () {
+            window.resizeTo(window.innerWidth, window.innerHeight);
+        }, 100);
+
         
+
         
     });
+
+    
+
+    
+
+    
 });
 
 
