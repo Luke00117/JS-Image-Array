@@ -51,24 +51,6 @@ $(document).ready(function () {
         }, 1000);
 
         
-
-    $('.ass-img').on('click', function () {
-    // Your existing code...
-
-    $assignedGallery.slick('slickGoTo', 1);
-    $assignedThumbnails.slick('slickGoTo', 1);
-
-    // Resize slick track and thumbnails for assigned gallery
-    $assignedGallery.slick('slickSetOption', 'slidesToShow', 1);
-    $assignedThumbnails.slick('slickSetOption', 'slidesToShow', 6);
-
-    // Your existing code...
-});
-
-    
-    
-
-
     
 
     $('.custom-next-main').on('click', function () {
@@ -191,6 +173,18 @@ $(document).ready(function () {
         assignedThumbnails.show();
         $(window).trigger('resize');      
     });
+
+    $('.ass-img').on('click', function () {
+
+    $assignedGallery.slick('slickGoTo', 1);
+    $assignedThumbnails.slick('slickGoTo', 1);
+
+
+    $assignedGallery.slick('slickSetOption', 'slidesToShow', 1);
+    $assignedThumbnails.slick('slickSetOption', 'slidesToShow', 6);
+
+ 
+});
 
     
 
